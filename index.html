@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Books</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4682b4; /* Steel blue */
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        section {
+            margin: 20px auto;
+            padding: 15px;
+            max-width: 600px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        #books-container {
+            display: none;
+            margin: 20px auto;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>தமிழ் புத்தகத் தொகுப்பு</h1>
+</header>
+
+<!-- Genre Dropdown -->
+<div class="dropdown">
+    <select onchange="loadBooks(this.value)">
+        <option value="">வகையைத் தேர்வுசெய்க</option>
+        <option value="history">History (வரலாறு)</option>
+        <option value="literature">Literature (இலக்கியம்)</option>
+        <option value="self-help">Self-Help (சுய உதவி)</option>
+        <option value="fiction">Fiction (கற்பனை)</option>
+        <option value="Science">Science(அறிவியல்)</option>
+        <option value="Autobiograpy">Autobiograpy (சுயசரிதை)</option>
+    </select>
+</div>
+
+<!-- Motivational Quotes Section for Above 40 Years -->
+<section id="motivation-section">
+    <h2>உணர்ச்சிமிக்க மேற்கோள்கள்</h2>
+    <ul>
+        <li>"நீங்கள் எப்போது தொடங்கினாலும், உங்கள் இலக்கை அடையும் நேரம் வரும்."</li>
+        <li>"வாழ்க்கையின் எத்தனை பிரச்சனைகளும் உங்களை வெற்றிக்கான வழிக்கு வழிகாட்டும்."</li>
+    </ul>
+</section>
+
+<!-- Importance of Studying Section for Above 40 Years -->
+<section id="importance-section">
+    <h2>கற்றலின் முக்கியத்துவம்</h2>
+    <ul>
+        <li>நீங்கள் எப்போதும் கற்றுக்கொண்டு, உங்கள் அறிவை மேம்படுத்த முடியும்.</li>
+        <li>வயதுக்கு மேல் செல்லும் போது, சுய வளர்ச்சியோடு கூடிய அறிவு உங்களுக்குத் தேவை.</li>
+    </ul>
+</section>
+
+<!-- Book Cards - Dynamically populated -->
+<div id="books-container" class="container">
+    <!-- Books will be loaded here based on selected genre -->
+</div>
+
+<!-- Include JS File -->
+<script src="script.js"></script>
+
+<script>
+function loadBooks(genre) {
+    const booksContainer = document.getElementById('books-container');
+    const motivationSection = document.getElementById('motivation-section');
+    const importanceSection = document.getElementById('importance-section');
+
+    // Clear previous books
+    booksContainer.innerHTML = "";
+
+    // Hide motivational quotes and importance when genre is selected
+    if (genre) {
+        motivationSection.style.display = "none";
+        importanceSection.style.display = "none";
+        booksContainer.style.display = "block";
+    }
+
+    if (genre === "history") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/8z7pI0O'">
+                <img src="https://image.vikatan.com/books/medium/2175.jpg" alt="பொன்னியின் செல்வன்">
+                <h3>பொன்னியின் செல்வன்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/ihSIyuP'">
+                <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/book/w/3/b/valmiki-ramayana-paperback-tamil-original-imagwvbkamchuwnq.jpeg?q=70&crop=false" alt="ராமாயணம்">
+                <h3>ராமாயணம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/5KbreWs'">
+                <img src="https://giri.in/cdn/shop/products/9105886-1_5e3fa7c8-025a-4b44-97a9-b78459f15113_600x600.jpg?v=1707289630" alt="மகாபாரதம்">
+                <h3>மகாபாரதம்</h3>
+            </div>
+             <div class="book-card" onclick="window.location.href='https://amzn.in/d/dflzf8k'">
+                <img src="https://m.media-amazon.com/images/I/81P+bo89ERL._SY385_.jpg" alt="சுதந்திர இந்திய வரலாறு">
+                <h3>சுதந்திர இந்திய வரலாறு</h3>
+            </div>
+        `;
+    } else if (genre === "literature") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/adhoChT'">
+                <img src="https://www.noolulagam.com/book_images/18447.jpg" alt="காண்ட புராணம்">
+                <h3>கந்த புராணம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/hFjwevn'">
+                <img src="https://giri.in/cdn/shop/products/91498310-1_silapathikaram_puliyur_kesikan_85c6a479-666e-4907-bd53-4ac1fdcc9020_600x600.jpg?v=1707290690" alt="சிலப்பதிகாரம்">
+                <h3>சிலப்பதிகாரம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/4xDxoYP'">
+                <img src="https://m.media-amazon.com/images/I/719KVYh8e5L._SY385_.jpg" alt="தொல்காப்பியம்">
+                <h3>தொல்காப்பியம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/iQznfAR'">
+                <img src="https://m.media-amazon.com/images/I/61RWg5SsV-L._SY385_.jpg" alt="சீவக சிந்தாமணி">
+                <h3>சீவக சிந்தாமணி</h3>
+            </div>
+        `;
+    } else if (genre === "self-help") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/2sX4jH7'">
+                <img src="https://m.media-amazon.com/images/I/71o6y4kvtoL._AC_UF1000,1000_QL80_.jpg" alt="தி சீக்ரெட்">
+                <h3>தி சீக்ரெட்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/itzFsTR'">
+                <img src="https://m.media-amazon.com/images/I/8154zi7wQyL._SL1500_.jpg" alt="நீங்கள் வெற்றி பெறலாம்">
+                <h3>நீங்கள் வெற்றி பெறலாம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/6cN9XAW'">
+                <img src="https://m.media-amazon.com/images/I/71exbml+VoL._SY385_.jpg" alt="நீங்கள் வெற்றி பெறலாம்">
+                <h3>நீங்கள் வெற்றி பெறலாம்</h3>
+            </div>
+        `;
+    } else if (genre === "Science") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/5aL3EZ4'">
+                <img src="https://m.media-amazon.com/images/I/81CZRvXs+2L._SY385_.jpg" alt="தி சீக்ரெட்">
+                <h3>தி சீக்ரெட்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/c8TNoyy'">
+                <img src="https://m.media-amazon.com/images/I/71VVWvH22NL._SY385_.jpg" alt="நினைவாற்றல்">
+                <h3>நினைவாற்றல்</h3>
+            </div>
+
+            </div>
+        `;} else if (genre === "Autobiograpy") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="https://m.media-amazon.com/images/I/81CZRvXs+2L._SY385_.jpg'">
+                <img src="https://m.media-amazon.com/images/I/71cqX7671wL._SX550_.jpg" alt="ஒரு யோகியின் சுயசரிதம்">
+                <h3>ஒரு யோகியின் சுயசரிதம்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/2vZcliW'">
+                <img src="https://m.media-amazon.com/images/I/31lPZMzc54L.jpg" alt="அக்னிச் சிறகுகள்">
+                <h3>அக்னிச் சிறகுகள்</h3>
+            </div>
+        `;
+    } else if (genre === "fiction") {
+        booksContainer.innerHTML = `
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/cX8ZqLU'">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/o/d/m/inikao-panchatantra-traditional-moral-stories-story-books-set-of-original-imahfhvhtftetmn4.jpeg?q=20&crop=false" alt="பஞ்சதந்திரக் கதைகள்">
+                <h3>பஞ்சதந்திரக் கதைகள்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/1kaByYn'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq1lmIrTspCKbvTQcG9-f75RKC2OlyQ0Nmzg&s" alt="தெனாலி ராமன்">
+                <h3>தெனாலி ராமன்</h3>
+            </div>
+            <div class="book-card" onclick="window.location.href='https://amzn.in/d/7nQpszD'">
+                <img src="https://cdn.exoticindia.com/images/products/original/books-2019-012/mzv775.jpg" alt="அக்பர் மற்றும் பீர்பால்">
+                <h3>அக்பர் மற்றும் பீர்பால்</h3>
+            </div>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
